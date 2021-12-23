@@ -1,0 +1,57 @@
+<div class="login-register" style="background-color:#1976d2">
+  <div class="login-register-box">
+      <!-- <div class="bg-info text-white m-b-10 text-center p-t-10 p-b-10 alert-box">
+          <span class="m-r-10">Username : admin</span> |
+          <span class="m-l-10">Password : admin123</span>
+      </div> -->
+      <mat-card class="m-t-10">
+      <mat-card-content>
+        <mat-progress-bar *ngIf="this.authService.loading" mode="indeterminate" value="40"></mat-progress-bar>
+      <form id="loginform">
+          <div class="text-center">
+
+            <img alt="homepage" src="assets/images/logo-icon.png">
+              <h4 class="m-t-0">Connect to startop!</h4>
+          </div>
+          <div *ngIf="msg" class="bg-danger p-10 text-white">{{ msg }}</div>
+          <div fxLayout="row wrap">
+              <!-- col full-->
+              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <mat-form-field>
+                  <input matInput placeholder="Email" required #userName>
+                  </mat-form-field>
+              </div>
+              <!-- col full-->
+              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <mat-form-field>
+                  <input matInput type="password" placeholder="Mot de Passe" required="" #password>
+                  </mat-form-field>
+              </div>
+              <!-- col half-->
+              <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                  <mat-checkbox color="warn">Remember me</mat-checkbox>
+              </div>
+              <!-- col half-->
+              <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" class="text-right">
+                  <a [routerLink]="['/forgot-password']" class="link">Mot de passe oublier?</a>
+              </div>
+              <!-- col full-->
+              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                  <button mat-raised-button [disabled] ="this.authService.loading" color="accent" (click)="authService.SignIn(userName.value, password.value)" class="btn-block btn-lg m-t-20 m-b-20"  type="button">Sign in</button>
+              </div>
+              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                <button mat-raised-button [disabled] ="this.authService.loading" color="primary" (click) ="authService.GoogleAuth()" class="btn-block btn-lg m-t-0 m-b-20"  type="button"><i class="fab fa-google-plus-g"></i>Sign in with Google</button>
+            </div>
+              <!-- col full-->
+              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="text-center">
+                  <span>Enregistrez-vous
+                      <a [routerLink]="['/register']"  class="text-info link">Enregistrement</a>
+                  </span>
+              </div>
+          </div>
+      </form>
+      </mat-card-content>
+      </mat-card>
+  </div>
+</div>
+

@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-content>
+    <!-- #mildForm="ngForm" -->
+    <form >
+      <div fxLayout='row wrap' class="align-items-center m-b-15">
+        <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+          <h3 class="m-0">Mild {{mildCounter}} Ballot{{pluriel}}</h3>
+        </div>
+        <div fxFlex.gt-md="75" class="text-right">
+          <a routerLink='../../dashboard'>
+            <button mat-stroked-button color="warn" class="m-r-10">Cancel</button>
+          </a>
+
+            <button mat-raised-button color="primary" (click) ="saveDetail()" [disabled] ="addForm.invalid">Save PRF </button>
+          </div>
+          <div [formGroup] = "addForm">
+            <mat-form-field>
+              <mat-select formControlName="zs" required>
+                  <mat-option value="Doruma">
+                      Doruma
+                  </mat-option>
+                  <mat-option value="Dungu">
+                    Dungu
+                </mat-option>
+                <mat-option value="Isiro">
+                  Isiro
+              </mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          </div>
+          <div fxFlex.gt-md="100" fxFlex.gt-lg="100" fxFlex="100">
+            <div style="height: 250px;">
+              <zxing-scanner *ngIf="this.scan === true" (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+            <zxing-scanner *ngIf="this.delScan === true" (scanSuccess)="onCodeDelete($event)"></zxing-scanner>
+            <zxing-scanner *ngIf="this.scanCheck === true" (scanSuccess)="onCodeCheck($event)"></zxing-scanner>
+            </div>
+
+
+
+            <div fxLayout='row wrap' class="align-items-center m-b-15">
+              <div fxFlex.gt-md="100" fxFlex.gt-lg="100" fxFlex="100" class="text-right">
+                <button mat-raised-button class="text-left m-15" color="primary" (click) ="scanner()" [disabled]="delScan ==true || scanCheck == true" >Scan </button>
+                <button mat-raised-button  color="accent" (click) ="checkScanner()" [disabled]="scan ==true || delScan == true" >Check </button>
+                <button mat-raised-button class="text-left m-15" color="warn" (click) ="delScanner()" [disabled]="scan ==true || scanCheck == true" >Delete</button>
+              </div>
+              <!-- <div fxFlex.gt-md="50" fxFlex.gt-lg="50" fxFlex="100"></div>
+              <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+
+              </div> -->
+            </div>
+
+
+
+          </div>
+
+                    <!-- <p>
+                      <small>Scan Result</small>
+                      <strong>{{scanResult}}</strong>
+                    </p> -->
+
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

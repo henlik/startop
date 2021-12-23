@@ -1,0 +1,40 @@
+<h2 mat-dialog-title><strong>{{action}} Transaction</strong></h2>
+<mat-dialog-content class="mat-typography" *ngIf="action != 'Print'; else elseTemplate">
+  <form [formGroup]="entryForm" novalidate>
+    <div fxLayout="row wrap">
+
+      <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="50" fxfLEX="100">
+        <mat-form-field>
+          <input matInput placeholder="Umepay Account " formControlName="account" [(ngModel)]="local_data.account" required>
+        </mat-form-field>
+
+      </div>
+                <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxfLEX="100">
+                  <mat-form-field>
+                    <input matInput placeholder="Amount " formControlName="amount" [(ngModel)]="local_data.amount" required>
+                  </mat-form-field>
+
+                </div>
+
+                <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+                  <mat-form-field>
+                    <mat-select placeholder="currency" formControlName="currency" [(ngModel)]="local_data.currency" required>
+                      <mat-option  value="Fc">Fc</mat-option>
+                      <mat-option  value="$">$</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<ng-template #elseTemplate>
+  <mat-card>
+    <mat-card-header>
+
+    </mat-card-header>
+  </mat-card>
+</ng-template>
+<div mat-dialog-actions align="end">
+  <button type="submit" mat-button (click)="doAction(local_data.id)" color="warn" [disabled]="!entryForm.valid && action !== 'Print' ">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+</div>

@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-progress-bar *ngIf="this.authService.loading" mode="indeterminate" value="40"></mat-progress-bar>
+  <mat-card-content>
+      <mat-card-title>Profile Information</mat-card-title>
+      <!-- <mat-card-subtitle>Expansion panel
+          <code class=""><a href="https://material.angular.io/components/expansion/overview">Official Component</a></code>
+      </mat-card-subtitle> -->
+      <mat-card-header>
+        <div mat-card-avatar>
+            <img src="{{(this.authService.userData.photoURL) ? this.authService.userData.photoURL : '/assets/images/users/user-holder.png'}}" class="img-fluid img-circle" />
+        </div>
+        <button mat-raised-button color="primary" class="m-l-15 input-file-button">
+          <input type="file">
+      </button>
+    </mat-card-header>
+      <mat-accordion>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                  <mat-panel-title> Full Name </mat-panel-title>
+                  <mat-panel-description> {{this.authService.userData.displayName ? this.authService.userData.displayName : 'Votre nom complet'}} </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-form-field>
+                  <input matInput placeholder="Full Name" [(ngModel)]="this.authService.userData.displayName" #displayName>
+              </mat-form-field>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> Address </mat-panel-title>
+                <mat-panel-description> <address>{{this.authService.userData.address? this.authService.userData.address : 'Full Address here'}}</address> </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+                <input matInput placeholder="Address" [(ngModel)]="this.authService.userData.displayName" #address>
+            </mat-form-field>
+        </mat-expansion-panel>
+
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-panel-title> Phone Number </mat-panel-title>
+              <mat-panel-description>{{this.authService.userData.phoneNumber? this.authService.userData.phoneNumber : 'Your phone number'}}</mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field>
+              <input matInput placeholder="Phone Number" [(ngModel)]="this.authService.userData.phoneNumber" #phoneNumber>
+          </mat-form-field>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title> Birthday </mat-panel-title>
+            <mat-panel-description> {{this.authService.userData.dob? this.authService.userData.dob : 'Date of Birth'}} </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input matInput type="date" placeholder="Date of Birth" [(ngModel)]="this.authService.userData.dob" #dob>
+        </mat-form-field>
+    </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                  <mat-panel-title> Email  </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{this.authService.userData.email}}</p>
+          </mat-expansion-panel>
+      </mat-accordion>
+      <button mat-raised-button [disabled] = "this.authService.loading" color="primary" class="m-15 text-right input-file-button" (click)="this.authService.updateUser(displayName.value, address.value, phoneNumber.value, dob.value, this.authService.userData.uid)">
+        Save changes
+    </button>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,112 @@
+<div fxLayout="row wrap">
+<!-- Savings entry -->
+<div  fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+  <a routerLink='../../umepay/saving' >
+  <mat-card>
+    <div class="box p-20 bg-info text-center cursor-pointer" >
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'USD'}}</h3>
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'FC'}}</h3>
+      <h4 class="text-white m-0">Savings</h4>
+    </div>
+  </mat-card>
+</a>
+</div>
+
+<!-- investment portal -->
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+  <mat-card>
+    <div class="box p-20 bg-danger text-center cursor-pointer">
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'USD'}}</h3>
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'FC'}}</h3>
+      <h4 class="text-white m-0">Invested</h4>
+    </div>
+  </mat-card>
+</div>
+
+<!-- forex rate -->
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+  <mat-card>
+    <div class="box p-20 bg-warning text-center cursor-pointer" >
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'USD'}}</h3>
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'FC'}}</h3>
+      <h4 class="text-white m-0">Bias</h4>
+    </div>
+  </mat-card>
+</div>
+
+<!-- wallet -->
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100">
+  <mat-card>
+    <div class="box p-20 bg-success text-center cursor-pointer">
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'USD'}}</h3>
+      <h3 class="font-light text-white m-0">{{sumUSD | currency:'FC'}}</h3>
+      <h4 class="text-white m-0">Wallet</h4>
+    </div>
+  </mat-card>
+</div>
+
+<!-- entry history -->
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <div fxlayout="row wrap">
+        <div fxFlex="100">
+            <mat-card>
+              <mat-card-content>
+                <div fxLayout="row wrap" class="align-items-center">
+                  <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+                    <mat-form-field>
+                      <input matInput (keyup)="applyFilterUme($event.target.value)" placeholder="Search Transaction">
+                    </mat-form-field>
+                  </div>
+                  <!-- for agent only -->
+                  <div fxFlex.gt-md="75" class="text-right">
+                    <button mat-raised-button (click)="openDialogUme('Add',{},'')" color="primary">Top up</button>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div fxLayout="row wrap">
+      <div fxFlex="100">
+          <mat-card>
+            <mat-card-content>
+              <div class="table-responsive">
+                <table mat-table [dataSource]="umeDataSource" matSort class="table airtime-list no-wrap">
+                  <!-- 'transaction','from','amount,currency','type','time' -->
+                  <ng-container matColumnDef="transaction">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Transaction Id</th>
+                    <td mat-cell *matCellDef="let element">{{element.transactionId}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="from">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Origin Account</th>
+                    <td mat-cell *matCellDef="let element">{{element.from}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+                    <td mat-cell *matCellDef="let element">{{element.amount | number:'1.2-2'}} {{element.currency}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+                    <td mat-cell *matCellDef="let element"> {{element.type}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdAt.toDate() |date: 'mediumDate'}}</td>
+                  </ng-container>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayUme"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayUme;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10,25,50]" showFirstLastButtons></mat-paginator>
+              </div>
+            </mat-card-content>
+          </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

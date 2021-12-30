@@ -26,8 +26,8 @@ export interface Menu {
 
 const MENUITEMS = [
     {
-        state: 'dashboard',
-        name: 'Dashboard',
+        state: 'product',
+        name: 'Product',
         type: 'link',
         icon: 'business_center'
     }

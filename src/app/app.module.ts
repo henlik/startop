@@ -10,6 +10,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FullComponent } from './layouts/full/full.component';
 import { AppBlankComponent } from './layouts/blank/blank.component';
 import {ToastrModule} from 'ngx-toastr';
+// import { QuillModule } from 'ngx-quill';
+// import{QuillModule} from 'ngx-quill';
 
 import { VerticalAppHeaderComponent } from './layouts/full/vertical-header/vertical-header.component';
 import { VerticalAppSidebarComponent } from './layouts/full/vertical-sidebar/vertical-sidebar.component';
@@ -47,6 +49,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { PromptComponent } from './shared/prompt/prompt.component';
 import { PwaService } from './shared/pwa.service';
 import { ComponentsModule } from './components/components.module';
+// import { PipePipe } from './shares/pipe.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -76,6 +79,7 @@ const initilizer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
     SignUpComponent,
     VerifyEmailComponent,
     PromptComponent,
+    // PipePipe,
   ],
   imports: [
     BrowserModule,
@@ -92,13 +96,14 @@ const initilizer = (pwaService: PwaService) => () => pwaService.initPwaPrompt();
     RouterModule.forRoot(AppRoutes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence({
-      synchronizeTabs:true
+      synchronizeTabs:true,
     }),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireMessagingModule,
     HttpClientModule,
     ZXingScannerModule,
+    // QuillModule.forRoot(),
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

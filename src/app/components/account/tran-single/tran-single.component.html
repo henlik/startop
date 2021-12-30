@@ -1,0 +1,96 @@
+<mat-card>
+  <mat-card-header class="card-header {{tranSingle?.category}}">
+    <div fxFlex.gt-sm="30" fxFlex.gt-xs="50" fxFlex="50" class="text-left">
+      <mat-card-title>
+        <a routerLink="/component/account" class="text-white">
+          <mat-icon>arrow_back</mat-icon>
+        </a>
+        {{tranSingle?.projectName}}
+      </mat-card-title>
+    </div>
+    <div fxFlex.gt-sm="30" fxFlex.gt-xs="50" fxFlex="50" class="text-center">
+      <b>Share Certification</b>
+    </div>
+
+
+<div fxFlex.gt-sm="40" fxFlex.gt-xs="100" fxFlex="100" class="text-right">
+
+    <button [matMenuTriggerFor]="sharesMenu" mat-mini-fab class="m-r-5">
+      <mat-icon >share</mat-icon>
+    </button>
+    <mat-menu #sharesMenu="matMenu" class="mymegamenu">
+      <button mat-menu-item >
+        <a routerLink="" style="color:rgba(10, 130, 228, 0.918);"><i class="fa fa-print m-r-10"></i> Print</a>
+    </button>
+    <button mat-menu-item>
+      <a routerLink="" style="color:rgba(10, 86, 228, 0.918);"><i class="fa fa-download m-r-10"></i> Download as PDF</a>
+  </button>
+  </mat-menu>
+  </div>
+
+</mat-card-header>
+</mat-card>
+
+<mat-card>
+  <!-- general element informations -->
+  <mat-card-header>
+    <div fxFlex.gt-xs="50" fxFlex.gt-sm="50" fxFlex="100" class="text-left">
+      <img width="150" src="assets/images/ua.png" alt="umeafrika Sarl logo">
+    </div>
+    <div fxFlex.gt-xs="50" fxFlex.gt-sm="50" fxFlex="100" class="text-right">
+      <img width="100" src="assets/icons/startop-144.png" alt="Startop logo">
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+
+
+      <!-- <div fxFlex.gt-xs="50" fxFlex.gt-sm="100" fxFlex="100">
+          <h4 class="m-b-10 font-medium">Share info</h4>
+          <h6 class="m-t-0 m-b-5">Product: {{tranSingle?.projectName}}</h6>
+          <h6 class="m-t-0 m-b-5">Product Id: {{tranSingle?.pitchId}}</h6>
+          <h6 class="m-t-0 m-b-5">Company: {{tranSingle?.companyName}}</h6>
+          <h6 class="m-t-0 m-b-5">Company Id: {{tranSingle?.companyId}}</h6>
+      </div>
+      <div fxFlex.gt-xs="50" fxFlex.gt-sm="100" fxFlex="100" class="text-right">
+          <h4 class="m-b-10 font-medium">Share Owner</h4>
+          <h6 class="m-t-0 m-b-5">
+              Name: {{user?.displayName}}
+          </h6>
+          <h6 class="m-t-0 m-b-5">
+              Email: {{user?.email}}
+          </h6>
+          <h6 class="m-t-0 m-b-5">
+              Address: {{user?.address}}
+          </h6>
+          <h6 class="m-t-0 m-b-5">Phone Number {{user?.phoneNumber}}
+          </h6>
+      </div> -->
+  <div fxLayout="row wrap">
+      <div fxFlex.gt-xs="100" fxFlex.gt-sm="100" fxFlex="100" class="text-center">
+      <h2 ><b>CERTIFICATE</b></h2>
+      <h4 ><b>OF SHARE PURCHASE</b></h4>
+      <p>This is to certify that <b>{{user.displayName}}</b> have successfully purchased <b>{{tranSingle?.itemQuantity}}</b> shares of <b>{{tranSingle?.projectName}}</b> from <b>{{tranSingle?.companyName}}</b> worth <b>{{tranSingle?.itemCost |currency:'USD'}}</b>  </p>
+    </div>
+    <div fxFlex.gt-xs="40" fxFlex.gt-sm="40" fxFlex="100" class="p-l-20">
+      <h5>Purchase Id: <b>{{tranSingle?.payment.id}}</b></h5>
+      <h5>Purchase Date: <b>{{tranSingle?.payment.create_time | date:'mediumDate'}}</b></h5>
+    </div>
+    <div fxFlex.gt-xs="30" fxFlex.gt-sm="30" fxFlex="100" class="text-center">
+      <!-- qr generator here -->
+      <img class="m-t-10" width="100" src="assets/images/qr.png" alt="authentication QR code">
+    </div>
+
+    <div fxFlex.gt-xs="30" fxFlex.gt-sm="30" fxFlex="100" class="text-right">
+      <h5 class="m-b-0 p-b-0">Ir Henock M. LIKOYO</h5>
+      <img class="m-0 p-0" width="150" src="assets/images/hn.png" alt="CEO Signature">
+      <h6 class="m-t-0 p-t-0">Co-Founder & CEO</h6>
+    </div>
+
+  </div>
+  </mat-card-content>
+  <mat-card-footer class="text-center">
+    <small> Scan the QR code to verify the certificate authentication, make sure you are redirected to <b>https://startop.cd/verification</b> </small>
+  </mat-card-footer>
+  <!-- payment informations -->
+
+</mat-card>

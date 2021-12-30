@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Invest in Project Title</h2>
+<mat-dialog-content class="mat-typography" *ngIf="umeService.isLoggedIn; else elseTemplate">
+  <form id="paymentForm">
+    <div fxLayout="row wrap">
+
+    <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="50">
+      <mat-form-field>
+          <mat-label>Taht</mat-label>
+          <span matPrefix>100</span>
+          <input type="number" max="1000" min="1" matInput #numberShare>
+          <span matSuffix></span>
+      </mat-form-field>
+    </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+<ng-template #elseTemplate>
+  <mat-card>
+    <mat-card-header>
+      You need to <a routerLink="../login">login</a> in order to proceed
+    </mat-card-header>
+  </mat-card>
+</ng-template>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+</div>

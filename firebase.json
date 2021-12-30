@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/Startapp",
+    "public": "dist/Startop",
     "ignore": [
       "firebase.json",
       "**/.*",

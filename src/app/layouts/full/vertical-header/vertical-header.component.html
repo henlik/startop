@@ -2,6 +2,7 @@
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
+
 <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5" *ngIf="authService.userData as user">
     <img src="{{(user.photoURL) ? user.photoURL : '/assets/images/users/user-holder.png'}}" alt="user" class="profile-pic"> </button>
 <mat-menu #profile="matMenu" class="mymegamenu">
@@ -11,9 +12,6 @@
     <button mat-menu-item>
         <a routerLink="./component/profile" color="primary"><mat-icon>account_box</mat-icon> Profile</a>
     </button>
-    <!-- <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon> Disable notifications
-    </button> -->
     <button mat-menu-item (click)="authService.SignOut()">
         <mat-icon>exit_to_app</mat-icon> Sign Out
     </button>

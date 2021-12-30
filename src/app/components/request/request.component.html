@@ -1,0 +1,81 @@
+<div fxLayout="row wrap">
+  <!-- -->
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <div fxLayout="row wrap">
+      <div fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <div fxLayout="row wrap" class="align-items-center">
+              <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+                <mat-form-field>
+                  <input matInput (keyup)="applyFilterUme($event.target.value)" placeholder="Search Transaction">
+                </mat-form-field>
+              </div>
+              <!-- for sturtups only -->
+              <div fxFlex.gt-md="75" class="text-right">
+                <button mat-raised-button (click)="openDialogUme('Add',{},'')" color="primary">Pitch Request</button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div fxLayout ="row wrap">
+      <div fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <div class="table-responsive">
+              <table mat-table [dataSource]="umeDataSource" matSort class="table pitchRequest-list no-wrap">
+                <!-- 'requestId','projectName','category','stage','time','action' -->
+                <ng-container matColumnDef="requestId">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Request Id</th>
+                  <td mat-cell *matCellDef="let element">{{element.requestId}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="projectName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Project Name</th>
+                  <td mat-cell *matCellDef="let element">{{element.projectName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="category">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+                  <td mat-cell *matCellDef="let element">{{element.category}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="stage">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Entry Stage</th>
+                  <td mat-cell *matCellDef="let element">{{element.projectStage}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="time">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Submission Day</th>
+                  <td mat-cell *matCellDef="let element">{{element.createdAt.toDate()|date:'mediumDate'}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td mat-cell *matCellDef="let element" class="action-link">
+                    <a (click)="openDialogUme('Update',element)" class="m-r-10 cursor-pointer"><i class="fa fa-pencil"></i></a>
+                    <a (click)="openDialogUme('Delete',element)" class="m-r-10 cursor-pointer">
+                      <i class="fa fa-trash text-danger"></i>
+                    </a>
+                    <a (click)="openDialogUme('View',element)" class="m-r-10 cursor-pointer">
+                      <i class="fa fa-eye text-primary"></i>
+                    </a>
+                    <a (click)="openDialogUme('Product',element)" class="m-r-10 cursor-pointer">
+                      <i class="fab fa-product-hunt text-secondary"></i>
+                    </a>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayUme"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayUme;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10,25,50]" showFirstLastButtons></mat-paginator>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+<!-- <div fxLayout="row wrap">
+  <div fxFlex.gt-sm="50" fxFlex="100">
+      <mat-card>
+          <mat-card-header >
+
+              <div fxFlex.gt-sm="80" fxFlex.gt-xs="80" fxFlex="80" >
+
+                <div fxFlex.gt-sm="10" fxFlex.gt-xs="10" fxFlex="18" class="text-left" >
+                  <div mat-card-avatar>
+                    <img src="assets/icons/startop-512.png" class="img-fluid img-circle" />
+                </div>
+                </div>
+                <div fxFlex.gt-sm="90" fxFlex.gt-xs="90" fxFlex="82"  class="text-left" >
+                  <mat-card-title>Umeafrika Sarl</mat-card-title>
+                  <mat-card-subtitle>likoyo henock</mat-card-subtitle>
+                </div>
+
+              </div>
+
+              <div fxFlex.gt-sm="20" fxFlex.gt-xs="20" fxFlex="20" class="text-right">
+                <button mat-button color="primary" ><b>{{price | currency:"USD"}}</b></button>
+
+              </div>
+
+
+          </mat-card-header>
+
+            <div class="flex flex-col flex-auto w-full h-full xs:p-2 aspect-ration" id="video-player">
+              <youtube-player
+              videoId="otUVCXsF-R4"
+              suggestedQuality="highres"
+
+            [startSeconds]="1"
+            [endSeconds]="1"
+              ></youtube-player>
+            </div>
+
+          <mat-card-content style="background-color:rgb(202, 205, 214)">
+
+            <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="50" class="text-left">
+              <form id="paymentForm">
+
+                  <mat-form-field>
+                      <mat-label>{{1000}} left</mat-label>
+                      <input type="number" max="1000" min="1" matInput #numberShare>
+                      <button [matMenuTriggerFor]="paymentMenu" mat-raised-button matSuffix color="primary" (click)="payBills(numberShare.value, price)" [disabled]="numberShare.value === '' "><mat-icon>monetization_on</mat-icon> Invest</button>
+                  </mat-form-field>
+
+              </form>
+              <mat-menu #paymentMenu="matMenu" [overlapTrigger]="true" class="mymegamenu">
+                <div id="myPaymentButtons"></div>
+            </mat-menu>
+
+            </div>
+            <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="50" class="text-right">
+
+              <button (click)="fav()" mat-mini-fab color="primary" class="m-r-10" matBadge="{{likes | shortNumber}}" matBadgeColor="warn" matBadgeSize="medium">
+                <mat-icon  *ngIf="!favorite">favorite_border</mat-icon>
+                <mat-icon  *ngIf="favorite">favorite</mat-icon>
+
+              </button>
+              <button [matMenuTriggerFor]="sharesMenu" mat-mini-fab class="m-r-5">
+                <mat-icon >share</mat-icon>
+              </button>
+              <mat-menu #sharesMenu="matMenu" class="mymegamenu">
+                <button mat-menu-item >
+                  <a routerLink="" style="color:rgba(10, 130, 228, 0.918);"><i class="fa fa-twitter m-r-10"></i> Share to Twitter</a>
+              </button>
+              <button mat-menu-item>
+                <a routerLink="" style="color:rgba(10, 86, 228, 0.918);"><i class="fa fa-facebook m-r-10"></i> Share to Facebook</a>
+            </button>
+            <button mat-menu-item>
+                <a routerLink="" style="color:rgba(10, 173, 228, 0.918);"><i class="fa fa-telegram m-r-10"></i> Share to Telegram</a>
+            </button>
+            <button mat-menu-item>
+                <a routerLink="" style="color:rgba(50, 148, 71, 0.685);"><i class="fa fa-whatsapp m-r-10"></i> Share to Whatsapp</a>
+            </button>
+            <button mat-menu-item>
+              <a routerLink="" style="color:rgba(218, 219, 219, 0.918);"><i class="fa fa-copy m-r-10"></i> Copy Link</a>
+          </button>
+
+            </mat-menu>
+            </div>
+          </mat-card-content>
+
+      </mat-card>
+  </div>
+</div> -->
+
+<mat-card class="product-app">
+  <mat-card-content>
+    <div fxLayout="row wrap" class="align-items-center course-filters">
+      <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-md="50" fxFlex.gt-lg="50" fxFlex="100"></div>
+      <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select required [value]="selectedCategory" (selectionChange)="ddlChange($event)">
+            <mat-option value="All" selected>All</mat-option>
+            <mat-option value="Agro-Pastoral">Agro-Pastoral</mat-option>
+            <mat-option value="Technologie">Technologie</mat-option>
+            <mat-option value="Sante">Sante</mat-option>
+            <mat-option value="Environement">Environement</mat-option>
+            <mat-option value="Energie">Energie</mat-option>
+            <mat-option value="Industrie">Industrie</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div fxLayout="row wrap" class="course-app">
+  <div fxFlex.gt-md="33.33" fxFlex.gt-lg="33.33" fxFlex="100" *ngFor='let product of productList'>
+    <mat-card>
+      <mat-card-header class="course-header {{product?.category}}">
+        <mat-card-title>
+          <span class="course-name">{{product?.category}}</span>
+          <span class="course-duration">
+            Price: {{product?.price | currency:'USD'}}
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="text-center">
+        <h6 class="m-b-5"><b>{{product?.projectName}}</b> from <b>{{product?.companyName}}</b></h6>
+        <p class="m-b-5">{{product?.shortDescription}}</p>
+        <small>{{(product.productAt).toDate() |date:"mediumDate"}}</small>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+        <a [routerLink]="['/component/product/productSingle',product.id]"> Show more </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -26,7 +26,7 @@ export class FullComponent implements OnDestroy {
 	dark = false;
 	minisidebar = false;
 	boxed = false;
-	horizontal = false;
+	horizontal = true;
 
 	green = false;
 	blue = false;
@@ -74,6 +74,16 @@ export class FullComponent implements OnDestroy {
 	clickEvent(): void {
 		 this.status = !this.status;
 	}
+
+  horizon(): void{
+    this.horizontal = !this.horizontal;
+    if(this.horizontal === true){
+      this.router.navigate(['/component/product']);
+    }else if(this.horizontal === false){
+      this.router.navigate(['/dashboard']);
+    }
+    console.log(this.horizontal)
+  }
 
 	darkClick() {
 		// const body = document.getElementsByTagName('body')[0];

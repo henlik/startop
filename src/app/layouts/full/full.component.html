@@ -17,9 +17,10 @@
                         <b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo">
+
+                            <img src="assets/icons/startop-144.png" alt="homepage" class="dark-logo">
                             <!-- Light Logo icon -->
-                            <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo">
+                            <img height="40" width="40" src="assets/icons/startop-144.png" alt="homepage" class="light-logo">
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
@@ -43,7 +44,7 @@
                 <!-- ============================================================== -->
                 <!-- Search - style you can find in header.scss -->
                 <!-- ============================================================== -->
-                <button mat-icon-button class="srh-btn" (click)="showSearch = !showSearch">
+                <!-- <button mat-icon-button class="srh-btn" (click)="showSearch = !showSearch">
                     <mat-icon>search</mat-icon>
                 </button>
                 <form class="app-search" [ngClass]="{'show-search': showSearch}">
@@ -51,8 +52,15 @@
                     <a class="cl-srh-btn" (click)="showSearch = !showSearch">
                         <i class="ti-close"></i>
                     </a>
-                </form>
+                </form> -->
                 <span fxFlex></span>
+                <button (click)="horizon()" mat-icon-button class="m-r-5">
+                  <mat-icon>cart</mat-icon>
+                  <div class="notify">
+                      <span class="heartbit"></span>
+                      <span class="point"></span>
+                  </div>
+                </button>
                 <!-- ============================================================== -->
                 <!-- app header component - style you can find in header.scss / header.component.ts-->
                 <!-- ============================================================== -->

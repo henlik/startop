@@ -36,7 +36,17 @@ const MENUITEMS = [
     name: 'Dashboard',
     type: 'link',
     icon: 'business_center'
-  }
+  },
+  {
+    state: 'component',
+    name: 'Start-up',
+    type: 'sub',
+    icon: 'av_timer',
+    children: [
+        { state: 'request', name: 'Pitch Manager', type: 'link' },
+        { state: 'product', name: 'Product', type: 'link'}
+    ]
+},
 ];
 
 @Injectable()

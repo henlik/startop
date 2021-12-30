@@ -296,7 +296,7 @@ updateUser(displayName: string,address: string, phoneNumber: string, dob: Date, 
     return this._db.collection(collection, ref =>ref.where(field, '==',value)).snapshotChanges();
   }
   getWhereOnce(collection:string,field: string, value: any){
-    return this._db.collection(collection, ref =>ref.where(field, '==',value)).valueChanges().pipe();
+    return this._db.collection(collection, ref =>ref.where(field, '==',value)).get();
   }
   // allWhere(conditions: Array<any>){
   //   let condition;

@@ -1,0 +1,157 @@
+<h2 mat-dialog-title><strong>{{action}} Pitch Request</strong></h2>
+<mat-dialog-content class="mat-typography" *ngIf="action != 'Delete'; else elseTemplate">
+  <form [formGroup]= "entryFormed" novalidate>
+   <div fxLayout="row wrap">
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field >
+          <input  matInput placeholder="Project Name" formControlName="projectName" [(ngModel)]="local_data.projectName" [readonly]="action == 'View' " required>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <mat-select placeholder="Project Category" formControlName="category" [(ngModel)]="local_data.category" [disabled]="action == 'View' " required>
+            <mat-option  value="Agro-Pastoral">Agro-Pastoral</mat-option>
+            <mat-option  value="Technologie">Technologie</mat-option>
+            <mat-option  value="Sante">Sante</mat-option>
+            <mat-option  value="Environement">Environement</mat-option>
+            <mat-option  value="Energie">Energie</mat-option>
+            <mat-option  value="Industrie">Industrie</mat-option>
+            <mat-option  value="Usine">Usine</mat-option>
+            <mat-option  value="Mine">Mine</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <textarea matInput placeholder="Brief Description" formControlName="briefDescription" [(ngModel)]="local_data.briefDescription" [readonly]="action == 'View' " required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <mat-select placeholder="Project Stage" formControlName="projectStage" [(ngModel)]="local_data.projectStage" [disabled]="action == 'View' " required>
+            <mat-option  value="Prototype">Prototype</mat-option>
+            <mat-option  value="Launch">Launch</mat-option>
+            <mat-option  value="Scale">Scale</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <input matInput placeholder="Company Name" formControlName="companyName" [(ngModel)]="local_data.companyName" [readonly]="action == 'View' " required>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <input matInput placeholder="Company Id" formControlName="companyId" [(ngModel)]="local_data.companyId" [readonly]="action == 'View' " required>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <mat-select placeholder="Pitch Town" formControlName="pitchTown" [(ngModel)]="local_data.pitchTown" [disabled]="action == 'View' " required>
+            <mat-option  value="Kinshasa">Kinshasa</mat-option>
+            <mat-option  value="Goma">Goma</mat-option>
+            <mat-option  value="Bunia">Bunia</mat-option>
+            <mat-option  value="Isiro">Isiro</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+    </div>
+  </form>
+  <!-- aprovoved, build product form -->
+  <form *ngIf="action === 'View' " [formGroup]="revisionForm" novalidate>
+    <div fxLayout="row wrap">
+      <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" >
+        <mat-form-field>
+          <mat-select placeholder="Request Permission" formControlName="permission" [(ngModel)]="local_data.permission" required>
+            <mat-option  value="Aproved">Aproved</mat-option>
+            <mat-option  value="On Probation">On Probation</mat-option>
+            <mat-option  value="Deny">Deny</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="50" fxFlex="100" >
+        <mat-form-field>
+          <textarea matInput placeholder="Brief Decision Note" formControlName="note" [(ngModel)]="local_data.note"  required></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <form *ngIf="action === 'Document Upload' " [formGroup]="documentForm" novalidate>
+    <div fxLayout="row wrap">
+      <!-- <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" >
+        <mat-form-field>
+          <mat-select placeholder="Request Permission" formControlName="permission" [(ngModel)]="local_data.permission" required>
+            <mat-option  value="Aproved">Aproved</mat-option>
+            <mat-option  value="On Probation">On Probation</mat-option>
+            <mat-option  value="Deny">Deny</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div> -->
+
+      <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="50" fxFlex="100" >
+        <mat-form-field>
+          <input type="file" matInput placeholder="Legal Documents" formControlName="legalDocuments" [(ngModel)]="local_data.legalDocuments"  required>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <form *ngIf="action === 'Product' " [formGroup]="productForm" novalidate>
+    <div fxLayout="row wrap">
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <input matInput placeholder="Pitch Url" formControlName="pitchUrl" [(ngModel)]="local_data.pitchUrl" [readonly]="action == 'View' " required>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <textarea matInput placeholder="Short Description" formControlName="shortDescription" [(ngModel)]="local_data.shortDescription" [readonly]="action == 'View' " required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-form-field>
+          <textarea matInput placeholder="Long Description" formControlName="longDescription" [(ngModel)]="local_data.longDescription" [readonly]="action == 'View' " required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <textarea matInput placeholder="Shares" formControlName="shares" [(ngModel)]="local_data.shares" [readonly]="action == 'View' " required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="p-10" fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-form-field>
+          <textarea matInput placeholder="Price (usd)" formControlName="price" [(ngModel)]="local_data.price" [readonly]="action == 'View' " required></textarea>
+        </mat-form-field>
+      </div>
+
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<ng-template #elseTemplate>
+  <mat-card>
+    <mat-card-header>
+      are you sure you want to delete project {{local_data.projectName}} of project Id {{local_data.requestId}} ?
+    </mat-card-header>
+  </mat-card>
+</ng-template>
+<div mat-dialog-actions align="end">
+  <button type="submit" mat-button (click)="doAction(local_data.id)" [disabled]="!entryFormed.valid && action != 'Delete' && !revisionForm.valid " color="warn">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button>Cancel</button>
+</div>
+

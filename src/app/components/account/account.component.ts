@@ -49,7 +49,7 @@ export class AccountComponent implements OnInit {
   }
 
   getData(): void{
-    this.afs.collection<any>('transaction',ref => ref.where('cretedBy','==',this.user.uid)).get().forEach(data =>{
+    this.afs.collection<any>('transaction',ref => ref.where('createdBy','==',this.user.uid)).get().forEach(data =>{
 
       this.billList =  data.docs.map(e =>{
         return {

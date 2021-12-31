@@ -37,7 +37,7 @@
               </div>
               <!-- col full-->
               <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-                  <button mat-raised-button [disabled] ="this.authService.loading" color="accent" (click)="authService.SignIn(userName.value, password.value)" class="btn-block btn-lg m-t-20 m-b-20"  type="button">Sign in</button>
+                  <button mat-raised-button disabled color="accent" (click)="authService.SignIn(userName.value, password.value)" class="btn-block btn-lg m-t-20 m-b-20"  type="button">Sign in</button>
               </div>
               <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
                 <button mat-raised-button [disabled] ="this.authService.loading" color="primary" (click) ="authService.GoogleAuth()" class="btn-block btn-lg m-t-0 m-b-20"  type="button"><i class="fab fa-google-plus-g"></i>Sign in with Google</button>

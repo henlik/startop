@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-  
+
   },
 };
 
@@ -17,3 +17,15 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+/**
+ *
+ * ERRORS TO BE FIX
+ * 1.Login message error => momentary fixed, waiting for Admin user managment
+ * 2.redirection after payment successfull => guard ans async auth complict
+ * 3.share not a NAN problem =>fixed
+ *
+ * UPDATE TO BE MADE
+ * 1.product purchase pie dashboard
+ * 2.dashboard
+ */

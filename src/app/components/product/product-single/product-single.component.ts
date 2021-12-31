@@ -48,11 +48,12 @@ export class ProductSingleComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('user') as string);
       this.umeService.getDoc(this.id, 'pitchRequest').subscribe(data => {
         this.productList = data;
-        if(this.productList.purchased === ''){
+        if(typeof this.productList.purchased === 'undefined'){
           this.reminder = parseFloat(this.productList.shares);
         }else{
           this.reminder = parseFloat(this.productList.shares) - parseFloat(this.productList.purchased);
         }
+        console.log(this.reminder, this.productList.shares, typeof this.productList.purchased);
 
       })
      }
@@ -86,18 +87,21 @@ export class ProductSingleComponent implements OnInit {
             // update the transaction document
 
 
-        if(this.productList.purchased === ''){
+        if(typeof this.productList.purchased === 'undefined'){
           this.purchased = parseFloat(value);
         }else{
           this.purchased = parseFloat(this.productList.purchased) + parseFloat(value);
         }
         this.umeService.updateDoc(this.id,{
-          purchased: this.purchased,
+          purchased: parseFloat(this.purchased),
         },'pitchRequest').then(() =>{
           // console.log(details);
+
+          // console.log(this.purchased);
         });
+        this.router.navigate(['/component/account']);
         // bill page next time
-        this.router.navigate(['/component/account/tranSingle',this.id]);
+
       }
 
     })

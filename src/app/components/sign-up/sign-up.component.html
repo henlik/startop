@@ -37,7 +37,7 @@
               <mat-checkbox class="font-14">I agree to the all
                 <a href="javascript:void(0)" class="link text-info">terms</a>.</mat-checkbox>
             </div>
-            <button mat-raised-button color="primary" class="btn-block btn-lg m-t-20 m-b-20" type="submit" (click)="authService.SignUp(userEmail.value, userPwd.value, userConPwd.value)">Create your account</button>
+            <button mat-raised-button color="primary" class="btn-block btn-lg m-t-20 m-b-20" type="submit" disabled (click)="authService.SignUp(userEmail.value, userPwd.value, userConPwd.value)">Create your account</button>
 
             <div class="text-center" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
               <span>Already have an account?

@@ -30,7 +30,6 @@ import { TranSingleComponent } from './account/tran-single/tran-single.component
     ProductComponent,
     PipePipe,
     ProductSingleComponent,
-
     TranSingleComponent,
   ],
   imports: [

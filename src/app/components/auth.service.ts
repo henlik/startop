@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { first, map, take } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
-export type CreateUserRequest = {displayName: string, password: string, email: string, role: string};
+export type CreateUserRequest = {displayName: string, password: string, email: string};
 export type UpdateUserRequest = {uid: string} & CreateUserRequest;
 
 @Injectable({
@@ -51,14 +51,14 @@ export class AuthService {
      this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result: { user: any; }) => {
         this.SetUserData(result.user);
-        if(this.isLoggedIn){
-          this.ngZone.run(() => {
-            this.router.navigate(['/dashboard']);
+        // if(this.isLoggedIn){
+          // this.ngZone.run(() => {
+            this.router.navigate(['/component/product']);
             this.toastr.success('Welcome to Startapp');
             this.loading = false;
-          });
+          // });
           // console.log(this.isLoggedIn);
-        }
+        // }
         // else{
         //   this.loading = false;
         //   this.toastr.error('You need to verify your email address');
@@ -128,13 +128,14 @@ export class AuthService {
   AuthLogin(provider: firebase.auth.GoogleAuthProvider) {
     return this.afAuth.signInWithPopup(provider)
     .then((result: { user: any; }) => {
-       this.ngZone.run(() => {
-          this.router.navigate(['/dashboard']);
-        })
       this.SetUserData(result.user);
+      // this.ngZone.run(() => {
+        this.router.navigate(['/component/product']);
+      // })
     }).catch((error: any) => {
       window.alert(error)
     })
+
   }
 
   /* Setting up user data when sign in with username/password,
@@ -148,10 +149,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
-      role: user.role,
-      address: user.address,
       phoneNumber: user.phoneNumber,
-      dob: user.dob,
     }
     return userRef.set(userData, {
       merge: true

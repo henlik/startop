@@ -15,7 +15,7 @@ export class RevokeGuard implements CanActivate {
       if(this.authService.isLoggedIn !== true) {
         return true;
       }else{
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['/component/product'])
         return false;
       }
   }

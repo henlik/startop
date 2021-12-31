@@ -69,6 +69,17 @@ One of the major challenges that we are facing is, the majority of people here i
 
 The solution:  Get in touch with mobile payment service providers in the country to implement it within our system.
 
+## ScreenShots
+ 
+![PWA Installation](https://github.com/henlik/startop/blob/main/src/assets/images/1.png?raw=true)
+![Login Page](https://github.com/henlik/startop/blob/main/src/assets/images/2.png?raw=true)
+![Product Page](https://github.com/henlik/startop/blob/main/src/assets/images/3.png?raw=true)
+![Product Detail Page](https://github.com/henlik/startop/blob/main/src/assets/images/4.png?raw=true)
+![Product Detail Page With Paypal](https://github.com/henlik/startop/blob/main/src/assets/images/5.png?raw=true)
+![Account redirect button](https://github.com/henlik/startop/blob/main/src/assets/images/6.png?raw=true)
+![Account Page with Purchased Shares](https://github.com/henlik/startop/blob/main/src/assets/images/7.png?raw=true)
+![Certificate of Share purchase Page](https://github.com/henlik/startop/blob/main/src/assets/images/8.png?raw=true)
+
 ## Contact
 
 - +243 829 993 834 (Whatsapp)
